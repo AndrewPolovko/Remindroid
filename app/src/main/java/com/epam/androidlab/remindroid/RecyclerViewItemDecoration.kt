@@ -7,8 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 
 
-
-class RecyclerViewItemDecoration (val mDivider: Drawable) : RecyclerView.ItemDecoration() {
+class RecyclerViewItemDecoration(val mDivider: Drawable) : RecyclerView.ItemDecoration() {
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
         super.getItemOffsets(outRect, view, parent, state)
 
@@ -23,7 +22,7 @@ class RecyclerViewItemDecoration (val mDivider: Drawable) : RecyclerView.ItemDec
         val dividerRight = parent.width - parent.paddingRight
         val childCount = parent.childCount
 
-        for (i in 0..childCount-1){
+        for (i in 0..childCount - 1) {
             val childView = parent.getChildAt(i)
 
             val params = childView.layoutParams as RecyclerView.LayoutParams

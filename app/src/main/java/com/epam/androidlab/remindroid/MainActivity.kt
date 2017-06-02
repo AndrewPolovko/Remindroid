@@ -1,6 +1,7 @@
 package com.epam.androidlab.remindroid
 
 import android.graphics.drawable.Drawable
+import android.os.AsyncTask
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.content.res.ResourcesCompat
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         mRecyclerView.adapter = RemindersAdapter(remindersList)
         mRecyclerView.layoutManager = LinearLayoutManager(this)
         mRecyclerView.itemAnimator = DefaultItemAnimator()
-        val itemDivider = ResourcesCompat.getDrawable(resources,R.drawable.recycler_view_item_divider,null) as Drawable
+        val itemDivider = ResourcesCompat.getDrawable(resources, R.drawable.recycler_view_item_divider, null) as Drawable
         mRecyclerView.addItemDecoration(RecyclerViewItemDecoration(itemDivider))
 
         mFAB.setOnClickListener {

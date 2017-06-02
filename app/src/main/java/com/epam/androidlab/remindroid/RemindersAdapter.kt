@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 
 
 class RemindersAdapter(var remindersList: ArrayList<Reminder>) : RecyclerView.Adapter<RemindersAdapter.ReminderHolder>() {
@@ -14,11 +15,19 @@ class RemindersAdapter(var remindersList: ArrayList<Reminder>) : RecyclerView.Ad
         return ReminderHolder(view)
     }
 
-    inner class ReminderHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ReminderHolder(var view: View) : RecyclerView.ViewHolder(view) {
         val title: TextView = view.findViewById(R.id.reminder_title) as TextView
         val description: TextView = view.findViewById(R.id.reminder_description) as TextView
         val date: TextView = view.findViewById(R.id.reminder_date) as TextView
         val id: TextView = view.findViewById(R.id.reminder_id) as TextView
+
+        init {
+            view.setOnClickListener {
+
+                view = View(view.context)
+                Toast.makeText(view.context, "$adapterPosition", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun onBindViewHolder(holder: ReminderHolder, position: Int) {
@@ -31,5 +40,9 @@ class RemindersAdapter(var remindersList: ArrayList<Reminder>) : RecyclerView.Ad
 
     override fun getItemCount(): Int {
         return remindersList.size
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return super.getItemViewType(position)
     }
 }
